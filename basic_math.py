@@ -8,6 +8,7 @@
 
 
 def get_greatest(number_list):
+    
     """
     주어진 리스트에서 가장 큰 숫자를 반환함
 
@@ -24,7 +25,11 @@ def get_greatest(number_list):
             >>> bm.get_greatest(number_list)
             99
     """
-    greatest_number = None
+    greatest_number = number_list[0]
+    for number in number_list:
+        if greatest_number<number:
+            greatest_number = number
+
     return greatest_number
 
 
@@ -45,7 +50,10 @@ def get_smallest(number_list):
             >>> bm.get_smallest(number_list)
             11
     """
-    smallest_number = None
+    smallest_number = number_list[0]
+    for number in number_list:
+        if smallest_number>number:
+            smallest_number = number
     return smallest_number
 
 
@@ -66,7 +74,11 @@ def get_mean(number_list):
             >>> bm.get_mean(number_list)
             47
     """
-    mean = None
+    mean = 0
+    cnt = len(number_list)
+    for number in number_list:
+        mean += number
+    mean = mean/cnt
     return mean
 
 
@@ -90,5 +102,13 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    median = None
-    return median
+    median = 0
+    list = number_list.sort()
+    cnt = len(number_list)
+    if cnt%2 == 0 :
+        median1 = number_list[int(cnt/2)]
+        median2 = number_list[int(cnt/2)-1]
+        return (median1+median2)/2
+    else:
+        return number_list[int(cnt/2)]
+    
